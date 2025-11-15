@@ -1,8 +1,15 @@
+import {Fragment } from 'react'
 
 function Header(){
+
+    const name = "Juan"
     
     return (
-        <h1>Desde Header y actualizar</h1>
+        <Fragment>
+            <p>Hola: {name}</p>
+            <p>Despues</p>
+        </Fragment>
+        
     )
 }
 
