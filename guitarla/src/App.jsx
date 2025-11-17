@@ -8,6 +8,7 @@ function App() {
 
   //use State
   const [data, setData] = useState([]);
+  const [cart, setCart] = useState([]);
 
   //use Effect to return de data , is recomended to external APIs
   useEffect(()=> {
@@ -28,8 +29,9 @@ function App() {
           {data.map((guitar)=>{
             return(
               <Guitar 
-              key={guitar.id}
+                key={guitar.id}
                 guitar={guitar}
+                setCart={setCart}
               />
             )
           })}
