@@ -14,6 +14,8 @@ function App() {
     setData(db)
   }, [])
 
+
+
   return (
     <>
     <Header />  
@@ -23,7 +25,12 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-          <Guitar />
+          {data.map(()=>{
+            return(
+              <Guitar />
+            )
+          })}
+          
           
         </div>
     </main>
