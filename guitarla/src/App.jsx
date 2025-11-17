@@ -7,27 +7,27 @@ import { db } from "./data/db";
 function App() {
 
   //use State
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(db);
   const [cart, setCart] = useState([]);
 
   function addToCart(item){
     const itemExist = cart.findIndex((guitar =>{ guitar.id === item.id}));
-    console.log(itemExist);
+    if(itemExist >= 0){ //existe en el carrito
+      const updatedCart = [...cart]
+      updatedCart[itemExist].quantity++
+      setCart(updatedCart)
+    }else {
+      item.quantity = 1
+      setCart(prevCart => [...prevCart, item])
+    }
 
-    setCart(prevCart =>[...prevCart, item])
+    
   }
-
-  //use Effect to return de data , is recomended to external APIs
-  useEffect(()=> {
-    setData(db)
-  }, [])
-
 
 
   return (
     <>
     <Header />  
-
 
     <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
@@ -43,8 +43,7 @@ function App() {
               />
             )
           })}
-          
-          
+                    
         </div>
     </main>
 
