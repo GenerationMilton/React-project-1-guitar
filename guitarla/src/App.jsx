@@ -10,6 +10,10 @@ function App() {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
 
+  function addToCart(item){
+    setCart(prevCart =>[...prevCart, item])
+  }
+
   //use Effect to return de data , is recomended to external APIs
   useEffect(()=> {
     setData(db)
@@ -32,6 +36,7 @@ function App() {
                 key={guitar.id}
                 guitar={guitar}
                 setCart={setCart}
+                addToCart={addToCart}
               />
             )
           })}
