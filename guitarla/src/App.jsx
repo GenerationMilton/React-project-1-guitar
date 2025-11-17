@@ -2,21 +2,17 @@
 import Guitar from "./components/Guitar"
 import Header from "./components/Header"
 import { useState, useEffect } from 'react'
+import { db } from "./data/db";
 
 function App() {
 
-  // hook useState
-  const [auth, setAuth] = useState(false);
-  // hook useEffect ,make a piece of code when executes an state in the application
-  useEffect(() => {
-   if(auth){
-    console.log('Autenticado');
-   }
-  },[auth]);
+  //use State
+  const [data, setData] = useState([]);
 
-  setTimeout(() => {
-    setAuth(true)
-  }, 3000);
+  //use Effect to return de data , is recomended to external APIs
+  useEffect(()=> {
+    setData(db)
+  }, [])
 
   return (
     <>
