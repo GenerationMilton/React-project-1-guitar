@@ -12,6 +12,10 @@ function App() {
 
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
+  
+  useEffect(()=>{
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
 
   function addToCart(item){
     const itemExists = cart.findIndex((guitar =>{ guitar.id === item.id}));
@@ -24,6 +28,7 @@ function App() {
       item.quantity = 1
       setCart([...cart, item])
     }    
+    
   }
 
   function removeFromCart(id){
@@ -61,6 +66,8 @@ function App() {
   function clearCart(){
     setCart([])
   }
+
+
 
   return (
     <>
